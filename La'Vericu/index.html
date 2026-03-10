@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La' Vericu - Tuning Fără Eroare</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="overlay-stains"></div> <header>
+        <h1>LA' VERICU'</h1>
+        <p class="tagline">"Nu bate, nu troncăne, e rachetă, boss!"</p>
+    </header>
+
+    <main>
+        <section id="despre" class="paper-section">
+            <h2>Povestea Noastră</h2>
+            <p>
+                Totul a început în '98, când am desfăcut prima turbină de tractor cu un patent și o sârmă. Lumea zicea: 'Vericule, nu merge!', dar eu le-am arătat că dacă pui suflet (și puțin silicon unde curge ulei), orice mașină devine rachetă.
+            </p>
+            <p>
+                La garajul nostru nu facem doar tuning, facem magie. Ai BMW? Te rezolvăm să moară vecinii de ciudă. Ai Opel? Îl facem să nu se mai audă ca o betonieră. Noi nu lucrăm cu testere de fițe, noi ascultăm motorul cu urechea și știm imediat unde 'bate'. Aici e locul unde erorile din bord vin să moară și caii putere vin să se nască.
+            </p>
+            <p>
+                Intri cu o rablă, ieși cu o bijuterie. Nu bate, nu troncăne, direct pe Germania, boss!
+            </p>
+        </section>
+
+        <section class="paper-section">
+            <h2>Calculator de Tuning (Estimare „la ochi”)</h2>
+
+            <div class="controls-row">
+                <div class="input-group">
+                    <label>MARCĂ:</label>
+                    <select id="brand-select"></select>
+                </div>
+                <div class="input-group">
+                    <label>MODEL:</label>
+                    <select id="model-select"></select>
+                </div>
+                <div class="input-group">
+                    <label>AN FABRICAȚIE:</label>
+                    <input type="number" id="an-input" value="2010" oninput="actualizeaza()">
+                </div>
+            </div>
+    
+            <div id="calculator-grid" class="options-grid">
+                </div>
+    
+            <div class="invoice-container">
+                <h3>DEVIZ TEHNIC</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Upgrade / Piesă</th>
+                            <th>Detalii Vericu</th>
+                            <th>Preț Bază</th>
+                            <th>Manoperă</th>
+                            <th>Preț Final (Brand+An)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="invoice-body"></tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4">SUBTOTAL:</td>
+                            <td id="subtotal">0</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">TVA (Vericu n-a putut să te scape de el):</td>
+                            <td id="tva-val">0</td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <div class="grand-total">
+                    TOTAL: <span id="grand-total-val">0</span> LEI
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 La' Vericu S.R.L. - Direct pe Germania!</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+/* SMatrix // Spinzi Matrix Visualizer Stylesheet */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap');
+
+:root {
+    --bg-color: #060608;
+    --panel-color: rgba(22, 22, 26, 0.7); /* Translucent for Glassmorphism */
+    --accent-blue: #00d4ff;
+    --accent-pink: #ff007f;
+    --text-main: #e0e0e0;
+    --text-dim: #888;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --input-bg: #121217;
+    --font-mono: 'Fira Code', 'Courier New', monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-mono);
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* MAIN WRAPPER - Creates the "Detached" margin look */
+#app-container {
+    display: flex;
+    height: calc(100vh - 40px);
+    width: calc(100vw - 40px);
+    gap: 20px;
+    z-index: 2;
+}
+
+/* SIDEBAR - Glassmorphism & Floating effect */
+#sidebar {
+    width: 340px;
+    background-color: var(--panel-color);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--accent-blue);
+    margin: 0 0 10px 0;
+    text-align: center;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.container {
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+    padding: 1.2rem;
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+h3 {
+    font-size: 0.8rem;
+    margin: 0;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#coords {
+    color: var(--accent-blue);
+    font-weight: bold;
+}
+
+/* INPUT FIELDS - Styled to match the terminal vibe */
+.input-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+input[type="number"], 
+input[type="file"] {
+    width: 100%;
+    background: var(--input-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    padding: 0.7rem;
+    border-radius: 8px;
+    outline: none;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    transition: border-color 0.2s;
+}
+
+input[type="number"]:focus {
+    border-color: var(--accent-blue);
+}
+
+/* Custom styling for the Browse Files button */
+input[type="file"] {
+    font-size: 0.75rem;
+    cursor: pointer;
+}
+
+input[type="file"]::file-selector-button {
+    background: var(--border-color);
+    color: var(--text-main);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 0.4rem 0.8rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    margin-right: 10px;
+    transition: background 0.2s;
+}
+
+input[type="file"]::file-selector-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* BUTTONS - Blue to Pink transition with refined glow */
+button {
+    font-family: var(--font-mono);
+    cursor: pointer;
+    padding: 0.9rem;
+    border-radius: 8px;
+    border: none;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    background: var(--accent-blue);
+    color: #050505;
+}
+
+button:hover {
+    background: var(--accent-pink);
+    color: #fff;
+    /* Subtle neon bloom, not too bright */
+    box-shadow: 0 0 12px rgba(255, 0, 127, 0.3);
+    transform: translateY(-2px);
+}
+
+/* THE STAGE - Detached right panel */
+#stage {
+    flex-grow: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: #000;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+}
+
+/* Wavy / Rotated / Blurred Background Grid */
+#stage::before {
+    content: "";
+    position: absolute;
+    width: 250%; 
+    height: 250%;
+    top: -75%;
+    left: -75%;
+    background-image: 
+        linear-gradient(rgba(0, 212, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 212, 255, 0.08) 1px, transparent 1px);
+    background-size: 60px 60px;
+    transform: rotate(15deg); /* Rotated as requested */
+    /* Fade edges for "Wavy" look */
+    mask-image: radial-gradient(circle at center, black 20%, transparent 70%);
+    filter: blur(1px); /* Slight blur on the grid itself */
+    z-index: 1;
+}
+
+/* MATRIX WRAPPER - Floating inside the stage */
+#matrix-wrapper {
+    position: relative;
+    z-index: 5;
+    background: rgba(10, 10, 15, 0.9);
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+/* GRID / TABLE STYLE */
+table {
+    border-collapse: separate;
+    border-spacing: 6px;
+}
+
+td {
+    width: 42px;
+    height: 42px;
+    background: rgba(30, 30, 40, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--accent-blue);
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+td:hover {
+    background: rgba(0, 212, 255, 0.15);
+    border-color: var(--accent-blue);
+    transform: scale(1.05);
+}
+
+td.selected {
+    background: rgba(255, 0, 127, 0.15);
+    border-color: var(--accent-pink);
+    color: #fff;
+    box-shadow: 0 0 10px rgba(255, 0, 127, 0.2);
+}
